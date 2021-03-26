@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3CFDEBEC260E2701008C3A64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFDEBEB260E2701008C3A64 /* AppDelegate.swift */; };
 		3CFDEBEE260E2701008C3A64 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CFDEBED260E2701008C3A64 /* GameScene.sks */; };
-		3CFDEBF0260E2701008C3A64 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3CFDEBEF260E2701008C3A64 /* Actions.sks */; };
 		3CFDEBF2260E2701008C3A64 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFDEBF1260E2701008C3A64 /* GameScene.swift */; };
 		3CFDEBF4260E2701008C3A64 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFDEBF3260E2701008C3A64 /* GameViewController.swift */; };
 		3CFDEBF7260E2701008C3A64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CFDEBF5260E2701008C3A64 /* Main.storyboard */; };
@@ -20,7 +19,6 @@
 		3CFDEBE8260E2701008C3A64 /* HWS_Project11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HWS_Project11.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CFDEBEB260E2701008C3A64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CFDEBED260E2701008C3A64 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		3CFDEBEF260E2701008C3A64 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		3CFDEBF1260E2701008C3A64 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		3CFDEBF3260E2701008C3A64 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3CFDEBF6260E2701008C3A64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 			children = (
 				3CFDEBEB260E2701008C3A64 /* AppDelegate.swift */,
 				3CFDEBED260E2701008C3A64 /* GameScene.sks */,
-				3CFDEBEF260E2701008C3A64 /* Actions.sks */,
 				3CFDEBF1260E2701008C3A64 /* GameScene.swift */,
 				3CFDEBF3260E2701008C3A64 /* GameViewController.swift */,
 				3CFDEBF5260E2701008C3A64 /* Main.storyboard */,
@@ -130,7 +127,6 @@
 				3CFDEBF7260E2701008C3A64 /* Main.storyboard in Resources */,
 				3CFDEBEE260E2701008C3A64 /* GameScene.sks in Resources */,
 				3CFDEBF9260E2705008C3A64 /* Assets.xcassets in Resources */,
-				3CFDEBF0260E2701008C3A64 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +288,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Jinapps.HWS-Project11";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -311,7 +307,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Jinapps.HWS-Project11";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
