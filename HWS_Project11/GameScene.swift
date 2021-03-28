@@ -16,6 +16,7 @@ class GameScene: SKScene {
         background.position = CGPoint(x: 512, y: 384)
         background.blendMode = .replace
         background.zPosition = -1 //一番背後に配置
+        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         addChild(background)
         
     }
