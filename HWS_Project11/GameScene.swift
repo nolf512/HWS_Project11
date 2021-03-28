@@ -14,12 +14,21 @@ class GameScene: SKScene {
         
         let background = SKSpriteNode(imageNamed: "background")
         background.position = CGPoint(x: 512, y: 384)
+        background.blendMode = .replace
+        background.zPosition = -1 //一番背後に配置
         addChild(background)
-        
         
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let location = touch.location(in: self) //画面がタッチされた場所
+            let box = SKSpriteNode(color: UIColor.red, size: CGSize(width: 64, height: 64))
+            box.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
+            box.position = location
+            addChild(box)
+        }
+    }
     
    
 }
