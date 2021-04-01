@@ -9,8 +9,17 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-
+    var scoreLabel: SKLabelNode!
+    
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
+    
  
+    
+    
     override func didMove(to view: SKView) {
         
         let background = SKSpriteNode(imageNamed: "background")
@@ -19,6 +28,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.zPosition = -1 //一番背後に配置
         
         addChild(background)
+        
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = "Score: 0"
+        scoreLabel.horizontalAlignmentMode = .right
+        scoreLabel.position = CGPoint(x: 980, y: 700)
+        addChild(scoreLabel)
+        
+        
         
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsWorld.contactDelegate = self
@@ -47,10 +64,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.location(in: self) //画面がタッチされた場所
+            
+            
 //            let box = SKSpriteNode(color: UIColor.red, size: CGSize(width: 64, height: 64))
 //            box.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
 //            box.position = location
 //            addChild(box)
+            
+            
             let ball = SKSpriteNode(imageNamed: "ballRed")
             ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
             ball.physicsBody?.restitution = 0.4
@@ -106,8 +127,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func collision(ball: SKNode, object: SKNode){
         if object.name == "good" {
             destroy(ball: ball)
+            score += 1
         } else if object.name == "bad" {
             destroy(ball: ball)
+            score -= 1
         }
     }
     
