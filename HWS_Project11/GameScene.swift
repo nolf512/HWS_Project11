@@ -7,8 +7,9 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
+
  
     override func didMove(to view: SKView) {
         
@@ -20,6 +21,7 @@ class GameScene: SKScene {
         addChild(background)
         
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        physicsWorld.contactDelegate = self
         
 //        let bouncer = SKSpriteNode(imageNamed: "bouncer")
 //        bouncer.position = CGPoint(x: 512, y: 0)
@@ -52,7 +54,9 @@ class GameScene: SKScene {
             let ball = SKSpriteNode(imageNamed: "ballRed")
             ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
             ball.physicsBody?.restitution = 0.4
+            ball.physicsBody?.contactTestBitMask = ball.physicsBody?.collisionBitMask ?? 0
             ball.position = location
+            ball.name = "ball"
             addChild(ball)
             
             
@@ -76,14 +80,18 @@ class GameScene: SKScene {
         if isGood {
             slotBase = SKSpriteNode(imageNamed: "slotBaseGood")
             slotGlow = SKSpriteNode(imageNamed: "slotGlowGood")
+            slotBase.name = "good"
         } else {
             slotBase = SKSpriteNode(imageNamed: "slotBaseBad")
             slotGlow = SKSpriteNode(imageNamed: "slotGlowBad")
+            slotBase.name = "bad"
         }
         
         slotBase.position = position
         slotGlow.position = position
         
+        slotBase.physicsBody = SKPhysicsBody(rectangleOf: slotBase.size)
+        slotBase.physicsBody?.isDynamic = false
         
         
         addChild(slotBase)
@@ -95,5 +103,35 @@ class GameScene: SKScene {
         
     }
     
+    func collision(ball: SKNode, object: SKNode){
+        if object.name == "good" {
+            destroy(ball: ball)
+        } else if object.name == "bad" {
+            destroy(ball: ball)
+        }
+    }
+    
+    func destroy(ball: SKNode){
+        ball.removeFromParent()
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+//        if contact.bodyA.node?.name == "ball" {
+//            collision(between: contact.bodyA.node!, object: contact.bodyB.node!)
+//        } else if contact.bodyB.node?.name == "ball" {
+//            collision(between: contact.bodyB.node!, object: contact.bodyA.node!)
+//        }
+        
+        guard let nodeA = contact.bodyA.node else { return }
+        guard let nodeB = contact.bodyB.node else { return }
+        
+        if nodeA.name ==  "ball" {
+            collision(ball: nodeA, object: nodeB)
+        } else if nodeB.name == "ball" {
+            collision(ball: nodeB, object: nodeA)
+        }
+        
+    }
     
 }
